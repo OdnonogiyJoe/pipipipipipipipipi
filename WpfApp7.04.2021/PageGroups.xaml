@@ -1,0 +1,39 @@
+﻿<Page x:Class="WpfApp7._04._2021.PageGroups"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp7._04._2021"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageGroups">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Список групп"/>
+        <TextBlock Text="Радактирование группы" Grid.Column="1"/>
+
+        <ListBox Grid.Row="1" ItemsSource="{Binding Groups}" SelectedItem="{Binding SelectedGroup}" DisplayMemberPath="number"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBlock Text="Номер группы"/>
+            <TextBox Text="{Binding SelectedGroup.number}"/>
+            <TextBlock Text="Специальность группы"/>
+            <ComboBox ItemsSource="{Binding Specials}" SelectedItem="{Binding SelectedGroup.Specials}" DisplayMemberPath="Title"/>
+        </StackPanel>
+
+        <Button Grid.Row="2" Content="Добавить новую группу" Command="{Binding AddGroups}"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Сохранить" Command="{Binding SaveGroups}"/>
+
+        
+    </Grid>
+</Page>
